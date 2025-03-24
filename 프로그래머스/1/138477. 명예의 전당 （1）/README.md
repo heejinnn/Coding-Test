@@ -39,6 +39,11 @@
 </ul></li>
 </ul>
 
+### ✏️ 문제 풀이
+
+매 단계마다 점수를 하나씩 추가하면서, 상위 k개의 점수만 유지하도록 정렬하고, 그 중 가장 낮은 점수를 결과에 저장하도록 구현했다. 
+점수가 많아지면 k개를 초과한 가장 작은 값은 버려서 항상 상위 k개만 유지한다.
+
 <hr>
 
 <h5>입출력 예</h5>
@@ -78,5 +83,6 @@
 <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/5175c32d-44d7-4b13-be47-360bbe6a553c/%EA%B7%B8%EB%A6%BC2.png" title="" alt="그림2.png"></li>
 </ul>
 
+<br/>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
