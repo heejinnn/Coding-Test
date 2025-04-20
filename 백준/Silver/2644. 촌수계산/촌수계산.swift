@@ -1,42 +1,35 @@
-let n = Int(readLine()!)!
+import Foundation
 
-let relation = readLine()!.split(separator: " ").map{Int(String($0))!}
+let N = Int(readLine()!)!
+let input = readLine()!.split(separator: " ").map{Int($0)!}
 
-let (start, finish) = (relation[0],relation[1])
-let m = Int(readLine()!)!
+let (start, finish) = (input[0], input[1])
+let M = Int(readLine()!)!
 
-var arr = [[Int]](repeating: [Int](), count: n+1)
-var visited = [Bool](repeating: false, count: n+1)
-
+var visited = Array(repeating: false, count: N+1)
+var arr = Array(repeating: [Int]() , count: N + 1)
 var result = 0
 
-for _ in 0..<m{
-    let input = readLine()!.split(separator: " ").map{Int(String($0))!}
+for _ in 1...M {
+    let line = readLine()!.split(separator: " ").map{Int($0)!}
     
-    let (x,y) = (input[0], input[1])
-    
-    arr[x].append(y)
-    arr[y].append(x)
-}
-var isSuccess = false
-
-func dfs(_ start: Int, _ cnt: Int) {
-  visited[start] = true
-  if start == finish {
-    result = cnt
-    return
-  }
-  
-  for i in arr[start] {
-    if !visited[i] {
-      dfs(i, cnt + 1)
-    }
-  }
+    arr[line[0]].append(line[1])
+    arr[line[1]].append(line[0])
 }
 
-dfs(start, 0)
+dfs(start: start, count: 0)
 print(result == 0 ? -1 : result)
 
-
-
-
+func dfs(start: Int, count: Int){
+    visited[start] = true
+    if start == finish{
+        result = count
+        return
+    }
+    
+    for i in arr[start]{
+        if !visited[i]{
+            dfs(start: i, count: count + 1)
+        }
+    }
+}
