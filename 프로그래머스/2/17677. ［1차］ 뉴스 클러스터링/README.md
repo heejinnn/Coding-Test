@@ -89,7 +89,45 @@
 </tr>
 </tbody>
       </table>
+
+## ✏️ 문제 풀이
+
+1. 소문자 변환 및 2글자씩 추출
+두 문자열을 모두 소문자로 변환한 뒤, 연속된 두 글자씩 끊어서 "문자 쌍"을 만든다.
+
+예: "FRANCE" → "fr", "ra", "an", "nc", "ce"
+
+2. 알파벳 문자만 포함된 쌍 필터링
+추출한 문자쌍이 오직 영문자(a~z)로만 이루어졌는지 정규식을 사용해 검사한다.
+
+```swift
+let pattern = "^[a-zA-Z]*$" //영문자만 허용
+guard let range = str.range(of: pattern, options: .regularExpression) else{
+    continue
+}
+```
+
+예를 들어 "a1"이나 "@b"처럼 숫자나 특수문자가 포함되면 제외한다.
+
+3. 각 문자열에서 유효한 쌍의 개수를 세기
+각 문자열에서 생성된 유효한 문자쌍들을 딕셔너리에 저장하면서, 각 쌍이 몇 번 나왔는지 카운트한다.
+
+4. 교집합과 합집합 구하기
+두 문자열의 쌍들 중 같은 쌍이 있다면 교집합에 포함된다. 이때 등장 횟수는 두 문자열 중 더 작은 쪽의 횟수를 사용한다.
+
+합집합은 양쪽 쌍들의 전체 합에서 교집합만큼 중복 제거한 값을 사용한다.
+
+5. 자카드 유사도 계산
+교집합 크기를 합집합 크기로 나눈 값에 65536을 곱해 최종 점수를 계산한다.
+
+
+<br/>
+
+      
 <p><a href="http://tech.kakao.com/2017/09/27/kakao-blind-recruitment-round-1/" target="_blank" rel="noopener">해설 보러가기</a></p>
+
+
+
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
