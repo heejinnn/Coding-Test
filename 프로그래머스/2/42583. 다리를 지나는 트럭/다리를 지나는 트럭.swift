@@ -9,8 +9,7 @@ func solution(_ bridge_length:Int, _ weight:Int, _ truck_weights:[Int]) -> Int {
     
     
     while !(readyTruck.isEmpty && bridgeQueue.isEmpty){
-        
-        time+=1
+        time += 1
         
         if let first = bridgeQueue.first, time - first.time >= bridge_length{
             totalWeight -= first.weight
@@ -22,8 +21,9 @@ func solution(_ bridge_length:Int, _ weight:Int, _ truck_weights:[Int]) -> Int {
             bridgeQueue.append((nextTruck, time))
             totalWeight += nextTruck
         }
-
     }
     
     return time
 }
+        
+        
